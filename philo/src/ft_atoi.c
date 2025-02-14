@@ -6,11 +6,11 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:37:06 by rstumpf           #+#    #+#             */
-/*   Updated: 2024/10/18 10:48:45 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/14 22:21:19 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/philosophers.h"
 
 static int	ft_skipspaces(const char *str)
 {
