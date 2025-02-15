@@ -6,14 +6,17 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:17:48 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/14 23:34:30 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/15 15:52:18 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void	set_data(t_data *data, char **argv)
+void	init_data(t_data *data, char **argv)
 {
+	int	i;
+
+	i = 0;
 	data->philos_and_forks = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
@@ -22,6 +25,8 @@ void	set_data(t_data *data, char **argv)
 	if (argv[5])
 		data->must_eat_x = ft_atoi(argv[5]);
 	data->philo_died = false;
+	pthread_mutex_init(&data->start_mutex, NULL);
+	data->start_routine = false;
 }
 
 void	init_philos(t_data *data)
@@ -33,7 +38,7 @@ void	init_philos(t_data *data)
 	{
 		data->philos[i].data = data;
 		data->philos[i].philo_id = i + 1;
-		printf("Philo Number %d -> %d -> %d -> %d -> %d\n", data->philos[i].philo_id, data->time_to_die, data->time_to_eat, data->time_to_sleep, data->must_eat_x);
+		data->philos[i].meals_eaten = 0;
 		i++;
 	}
 }

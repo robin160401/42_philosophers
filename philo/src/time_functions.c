@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_get_time.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 21:35:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/15 16:04:30 by rstumpf          ###   ########.fr       */
+/*   Created: 2025/02/15 13:49:15 by rstumpf           #+#    #+#             */
+/*   Updated: 2025/02/15 16:32:20 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	main(int argc, char **argv)
+unsigned int	ft_get_time(void)
 {
-	t_data	data;
+	struct timeval	tv;
 
-	if (check_args(argc, argv) == -1)
-		return (1);
-	init_data(&data, argv);
-	init_philos(&data);
-	if (create_philos_start_routine(&data) == -1)
-		return (1);
-	
+	if (gettimeofday(&tv, NULL))
+		return (0);
+	return ((tv.tv_sec * (unsigned int)1000) + (tv.tv_usec / 1000));
+}
+
+void	ft_usleep(unsigned int sleep_time)
+{
+	unsigned int	start;
+
+	start = get_time();
+	while ((get_time() - start) < sleep_time)
+		usleep(500);
 }
