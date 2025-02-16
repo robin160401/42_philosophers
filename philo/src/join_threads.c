@@ -1,15 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat.c                                              :+:      :+:    :+:   */
+/*   join_threads.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 17:03:07 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/15 17:04:54 by rstumpf          ###   ########.fr       */
+/*   Created: 2025/02/16 19:44:39 by rstumpf           #+#    #+#             */
+/*   Updated: 2025/02/16 19:46:12 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	eat()
+void	join_threads(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->philos_and_forks)
+	{
+		pthread_join(data->philos[i].thread, NULL);
+		i++;
+	}
+}

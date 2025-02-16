@@ -6,20 +6,21 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:06 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/15 16:09:04 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/16 20:31:13 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	create_philos_start_routine(t_data *data)
+int	create_philos_start_routine_add_monitor(t_data *data)
 {
 	create_philos(data);
 	start_routine(data);
+	run_monitor(data);
 	return (0);
 }
 
-void	create_philos(t_data *data)
+int	create_philos(t_data *data)
 {
 	int	i;
 
@@ -31,6 +32,7 @@ void	create_philos(t_data *data)
 			return (ft_putendl_fd("Error creating Threads", 2), -1);
 		i++;
 	}
+	return (0);
 }
 
 void	start_routine(t_data *data)

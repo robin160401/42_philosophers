@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   think_r.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 21:35:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/16 20:31:22 by rstumpf          ###   ########.fr       */
+/*   Created: 2025/02/16 19:10:56 by rstumpf           #+#    #+#             */
+/*   Updated: 2025/02/16 19:18:32 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	main(int argc, char **argv)
+void	think_r(t_philo *philo, t_data *data)
 {
-	t_data	data;
-
-	if (check_args(argc, argv) == -1)
-		return (1);
-	init_data(&data, argv);
-	init_philos(&data);
-	if (create_philos_start_routine_add_monitor(&data) == -1)
-		return (1);
-	join_threads(&data);
-	destroy_forks(&data);
+	print_status(philo, data, "is thinking");
 }
