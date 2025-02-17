@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:35:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/16 20:31:22 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/17 17:57:32 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	main(int argc, char **argv)
 	init_philos(&data);
 	if (create_philos_start_routine_add_monitor(&data) == -1)
 		return (1);
-	join_threads(&data);
-	destroy_forks(&data);
+	// join_threads(&data);
+	destroy_mutexes(&data);
 }

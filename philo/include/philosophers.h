@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:35:57 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/16 20:24:16 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:18:57 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@
 typedef struct s_philo
 {
 	int				philo_id;
-	unsigned int	last_meal_time;
+	unsigned long	last_meal_time;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	int				meals_eaten;
+	bool			philo_is_full;
 	struct s_data	*data;
 }					t_philo;
 
@@ -41,14 +42,14 @@ typedef struct s_data
 	unsigned long	time_to_sleep;
 	unsigned long	start_time;
 	int				must_eat_x;
-	int				eaten_x;
 	bool			philo_died;
 	bool			start_routine;
-	pthread_mutex_t	start_mutex;
 	pthread_mutex_t	meal_mutex;
 	pthread_mutex_t	sleep_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	death_mutex;
+	pthread_mutex_t	start_mutex;
+	pthread_mutex_t	must_eat_mutex;
 	pthread_mutex_t	forks[MAX_PHILOS];
 	t_philo			philos[MAX_PHILOS];
 }			t_data;
@@ -61,8 +62,8 @@ void			init_data(t_data *data, char **argv);
 void			init_philos(t_data *data);
 void			*routine(void *philo_thread);
 unsigned long	ft_get_time(void);
-void			ft_usleep(unsigned int sleep_time, t_data *data);
-unsigned long	ft_get_time_of_program(t_data *data);
+void			ft_usleep(unsigned int milli_seconds, t_data *data);
+unsigned long	ft_get_current_time(t_data *data);
 void			update_last_meal_time(t_philo *philo, t_data *data);
 int				create_philos_start_routine_add_monitor(t_data *data);
 void			wait_start_signal(t_data *data);
@@ -82,5 +83,6 @@ void			init_forks(t_data *data);
 void			destroy_forks(t_data *data);
 void			run_monitor(t_data *data);
 void		    join_threads(t_data *data);
+void			destroy_mutexes(t_data *data);
 
 #endif

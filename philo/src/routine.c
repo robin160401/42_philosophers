@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 23:17:58 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/16 21:04:56 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:22:44 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,21 @@ void	*routine(void *philo_thread)
 
 	philo = (t_philo *)philo_thread;
 	data = philo->data;
-	wait_start_signal(data);
 	if (philo->philo_id % 2 != 0)
-        ft_usleep(data->time_to_eat / 2, data);
+		ft_usleep(data->time_to_eat / 2, data);
 	while (is_philo_dead(data) == false)
 	{
+		if (is_philo_dead(data))
+			return (NULL);
 		eat_r(philo, data);
+		if (is_philo_dead(data))
+			return (NULL);
 		sleep_r(philo, data);
+		if (is_philo_dead(data))
+			return (NULL);
 		think_r(philo, data);
+		if (is_philo_dead(data))
+			return (NULL);
 	}
 	return (NULL);
 }
