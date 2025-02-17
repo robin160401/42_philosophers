@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:35:57 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/17 18:18:57 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/17 19:33:21 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 	unsigned long	start_time;
 	int				must_eat_x;
 	bool			philo_died;
+	bool			philos_are_full;
 	bool			start_routine;
 	pthread_mutex_t	meal_mutex;
 	pthread_mutex_t	sleep_mutex;
@@ -84,5 +85,8 @@ void			destroy_forks(t_data *data);
 void			run_monitor(t_data *data);
 void		    join_threads(t_data *data);
 void			destroy_mutexes(t_data *data);
+bool			are_philos_full(t_data *data);
+bool			check_if_philos_are_full(t_data	*data);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 17:03:07 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/17 18:13:59 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:35:37 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	pick_forks(t_philo *philo, t_data *data)
 		pthread_mutex_lock(philo->right_fork);
 		print_status(philo, data, "has taken a fork");
 	}
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
 }
 
 void	is_eating(t_philo *philo, t_data *data)
@@ -56,6 +54,8 @@ void	is_eating(t_philo *philo, t_data *data)
 
 void	finished_eating(t_philo *philo, t_data *data)
 {
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_lock(&data->meal_mutex);
 	philo->meals_eaten++;
 	pthread_mutex_unlock(&data->meal_mutex);
