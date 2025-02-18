@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:49:15 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/17 19:44:00 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/18 10:09:44 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,4 @@ void	ft_usleep(unsigned int milli_seconds, t_data *data)
 			break ;
 		usleep(500);
 	}
-}
-
-void	update_last_meal_time(t_philo *philo, t_data *data)
-{
-	pthread_mutex_lock(&data->meal_mutex);
-	philo->last_meal_time = ft_get_current_time(data);
-	pthread_mutex_unlock(&data->meal_mutex);
 }

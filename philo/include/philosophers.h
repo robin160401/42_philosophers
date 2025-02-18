@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:35:57 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/17 19:33:21 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/18 10:12:03 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,11 @@ void			ft_usleep(unsigned int milli_seconds, t_data *data);
 unsigned long	ft_get_current_time(t_data *data);
 void			update_last_meal_time(t_philo *philo, t_data *data);
 int				create_philos_start_routine_add_monitor(t_data *data);
-void			wait_start_signal(t_data *data);
 void			eat_r(t_philo *philo, t_data *data);
 void			pick_forks(t_philo *philo, t_data *data);
 void			is_eating(t_philo *philo, t_data *data);
 void			finished_eating(t_philo *philo, t_data *data);
 int				create_philos(t_data *data);
-void			start_routine(t_data *data);
 void			monitor(t_data *data);
 void			philosopher_died(t_data *data, int i);
 bool			is_philo_dead(t_data *data);
@@ -83,10 +81,9 @@ void			think_r(t_philo *philo, t_data *data);
 void			init_forks(t_data *data);
 void			destroy_forks(t_data *data);
 void			run_monitor(t_data *data);
-void		    join_threads(t_data *data);
+void			join_threads(t_data *data);
 void			destroy_mutexes(t_data *data);
 bool			are_philos_full(t_data *data);
 bool			check_if_philos_are_full(t_data	*data);
-
 
 #endif

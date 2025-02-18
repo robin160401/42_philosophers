@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:37:06 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/14 22:21:19 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/18 10:10:34 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,3 @@ int	ft_atoi(const char *str)
 		return (0);
 	return (sign * result);
 }
-
-// int main(){
-//     char *s = "       -4567";
-//     int result = ft_atoi(s);
-//     printf("%d\n", result);
-//     return (0);
-// }

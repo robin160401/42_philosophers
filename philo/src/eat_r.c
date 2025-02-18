@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 17:03:07 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/17 18:35:37 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/18 10:09:50 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,12 @@ void	finished_eating(t_philo *philo, t_data *data)
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_lock(&data->meal_mutex);
 	philo->meals_eaten++;
+	pthread_mutex_unlock(&data->meal_mutex);
+}
+
+void	update_last_meal_time(t_philo *philo, t_data *data)
+{
+	pthread_mutex_lock(&data->meal_mutex);
+	philo->last_meal_time = ft_get_current_time(data);
 	pthread_mutex_unlock(&data->meal_mutex);
 }

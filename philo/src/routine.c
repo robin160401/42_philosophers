@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 23:17:58 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/17 19:53:40 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/18 10:09:22 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,6 @@ void	*routine(void *philo_thread)
 			return (NULL);
 	}
 	return (NULL);
-}
-
-void	wait_start_signal(t_data *data)
-{
-	pthread_mutex_lock(&data->start_mutex);
-	while (data->start_routine == false)
-	{
-		pthread_mutex_unlock(&data->start_mutex);
-		usleep(100);
-		pthread_mutex_lock(&data->start_mutex);
-	}
 }
 
 bool	is_philo_dead(t_data *data)
