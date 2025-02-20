@@ -15,7 +15,10 @@ OBJDIR          = obj
 LIBDIR          = ./libs
 
 # philosophers Source Files
-SRCS            = $(wildcard src/*.c)
+SRCS            = src/check_input.c src/cleanup.c src/create_philos.c src/eat_r.c \
+				  src/ft_atoi.c src/ft_isdigit.c src/ft_putendl_fd.c src/init_data.c \
+				  src/join_threads.c src/monitor.c src/philo.c src/routine.c src/sleep_r.c \
+				  src/think_r.c src/time_functions.c src/utils.c
 OBJS            = $(patsubst src/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # Build Target

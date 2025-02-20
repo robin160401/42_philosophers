@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:49:15 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/18 10:09:44 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/20 15:14:03 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	ft_usleep(unsigned int milli_seconds, t_data *data)
 	{
 		if (is_philo_dead(data) || are_philos_full(data))
 			break ;
-		usleep(500);
+		usleep(100);
 	}
 }
